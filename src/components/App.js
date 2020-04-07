@@ -12,10 +12,12 @@ class App extends Component {
 	render() {
 		return (
 			<div className='ui container'>
-				<div>
-					Select a language
-					<i onClick={() => this.onLanguageChange('english')} className='flag us' />
-					<i onClick={() => this.onLanguageChange('dutch')} className='flag nl' />
+				<div style={{ display: 'flex' }}>
+					Select a language:
+					<div style={{ marginLeft: '10px' }}>
+						<i onClick={() => this.onLanguageChange('english')} className='flag us' />
+						<i onClick={() => this.onLanguageChange('dutch')} className='flag nl' />
+					</div>
 				</div>
 				<UserCreate />
 			</div>

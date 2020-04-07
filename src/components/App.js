@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 
 import UserCreate from './UserCreate';
 import LanguageContext from '../contexts/LanguageContext';
+import ColorContext from '../contexts/ColorContext';
 
 class App extends Component {
-	state = { language: 'english' };
+	state = { language: 'english', color: 'primary' };
 
-	onLanguageChange = language => {
-		this.setState({ language });
+	onLanguageChange = (language, color) => {
+		this.setState({ language, color });
 	};
 
 	render() {
@@ -16,13 +17,15 @@ class App extends Component {
 				<div style={{ display: 'flex' }}>
 					Select a language:
 					<div style={{ marginLeft: '10px' }}>
-						<i onClick={() => this.onLanguageChange('english')} className='flag us' />
-						<i onClick={() => this.onLanguageChange('dutch')} className='flag nl' />
+						<i onClick={() => this.onLanguageChange('english', 'primary')} className='flag us' />
+						<i onClick={() => this.onLanguageChange('dutch', 'red')} className='flag nl' />
 					</div>
 				</div>
-				<LanguageContext.Provider value={this.state.language}>
-					<UserCreate />
-				</LanguageContext.Provider>
+				<ColorContext.Provider value={this.state.color}>
+					<LanguageContext.Provider value={this.state.language}>
+						<UserCreate />
+					</LanguageContext.Provider>
+				</ColorContext.Provider>
 			</div>
 		);
 	}

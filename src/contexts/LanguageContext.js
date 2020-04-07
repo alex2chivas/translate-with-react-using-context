@@ -3,15 +3,15 @@ import React from 'react';
 const Context = React.createContext('english');
 
 export class LanguageStore extends React.Component {
-	state = { language: 'english' };
+	state = { language: 'english', color: 'primary' };
 
-	onLanguageChange = language => {
-		this.setState({ language });
+	onLanguageChange = (language, color) => {
+		this.setState({ language, color });
 	};
 
 	render() {
 		return (
-			<Context.Provider value={{ ...this.state, onLanguageChange }}>
+			<Context.Provider value={{ ...this.state, onLanguageChange: this.onLanguageChange }}>
 				{/* Note This will make sure content that gets wrapped in this Provider 
                 since Components take tags as children
                 */}
